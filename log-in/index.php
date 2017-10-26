@@ -1,8 +1,8 @@
-<?php
+<!-- <?php
 
     include('check.php');
 
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
