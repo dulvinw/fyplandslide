@@ -1,0 +1,86 @@
+<div style="padding-top: 15px;">
+	
+	<table class="table table-striped">
+	  <thead class="thead-inverse">
+	    <tr>
+	      <th>#</th>
+	      <th>Year</th>
+	      <th>Amount</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="year in data">
+	    	<th scope="row">{{$index + 1}}</th>
+	    	<td>{{year.year}}</td>
+	    	<td>{{year.fee}}</td>
+	    </tr>
+	    <tr style="padding-top: 20px;">
+	    	<th scope="row">Total</th>
+	    	<td></td>
+	    	<td><strong>{{total}}</strong></td>
+	    </tr>
+	  </tbody>
+	</table>
+
+	<div class="row" style="margin-top: 100px;">
+		<div class="col-md-8 offset-md-2">
+			
+			<p>All cheques should be drawn in favour of <strong>SRI LANKA ENERGY MANAGERS ASSOCIATION</strong> and forwarded to Treasurer, Sri Lanka Energy Managers Association, No. 29/1, Fairfield Gardens, Colombo 08 or credited to our Bank Account and the deposit slip forwarded to SLEMA office.</p>
+
+			<p class="mb-0">Our Bank A/c details are:</p>
+
+			<div class="row ml-3">
+				
+				
+
+				<div class="col-md-4">
+
+					<div class="row">
+						
+						<p class="mb-0">Name of Account: </p>
+
+					</div>
+
+					<div class="row">
+						
+						<p class="mb-0">Current A/c No: </p>
+						
+					</div>
+
+					<div class="row">
+						
+						<p>Name of Bank: </p>
+						
+					</div>
+
+				</div>
+
+				<div class="col-md-8">
+					
+					<div class="row">
+						
+						<p class="mb-0">Sri Lanka Energy Managers Association</p>
+
+					</div>
+
+					<div class="row">
+						
+						<p class="mb-0">204100140085328</p>
+						
+					</div>
+
+					<div class="row">
+						
+						<p>Peoples Bank, Headquarters Branch</p>
+						
+					</div>
+				</div>
+
+			</div>
+			
+
+		</div>
+	</div>
+
+</div>
+

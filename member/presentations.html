@@ -1,0 +1,29 @@
+ <div class="row">
+
+	<div class="col-sm-1"></div>
+
+		<div class="col-sm-11 mt-4" ng-hide="viewMore">
+
+			<u>
+
+				<li ng-repeat="presentation in presentationArray"><a href="/admin/resources/presentations/{{presentation.file_name}}">{{presentation.descrp}}</a></li>
+
+			</u> 
+
+		<button class="btn btn-primary btn-sm" style="float: right;" ng-click="more()">See More</button>
+
+		</div>
+
+		<div class="col-sm-11 mt-4" ng-show="viewMore">
+
+			<u>
+
+				<li ng-repeat="presentation in presentationArray"><a href="/admin/resources/presentations/{{presentation.file_name}}">{{presentation.descrp}}</a></li>
+
+			</u> 
+
+		<button class="btn btn-primary btn-sm" style="float: right;" ng-click="less()">Hide</button>
+
+	</div>
+
+</div>
