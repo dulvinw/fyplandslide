@@ -40,31 +40,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
       var app = angular.module("land-app", []);
       app.controller("land-control", function($scope) {
           $scope.nodes = [
               {name : "Alfreds Futterkiste"},
               {name : "Berglunds snabbköp"},
               {name : "Centro comercial Moctezuma"},
-              {name : "Ernst Handel"}
+              {name : "Ernst Handel"},
+              {name : "Test 1"},
+              {name : "Test 2"}
           ]
       });
-    </script>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
+      var dataArray = [
           ['Year', 'Moisture'],
           ['2004',  1000],
           ['2005',  1170],
           ['2006',  660],
           ['2007',  1030]
-        ]);
+        ];
+
+        
+      function drawChart() {
+        
+        var data = google.visualization.arrayToDataTable(dataArray);
 
         var options = {
           title: 'Moisture Level',
