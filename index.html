@@ -13,19 +13,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   </head>
 
-  <body style="background-color: #9e9894;">
+  <body style="background-color: #9e9894;" ng-app="land-app">
 
-    <div class="container">
+    <div class="container" ng-controller="land-control">
       <div class="row" style="margin-top: 50px;">
-        <div class="col-sm-5" style="margin-right: 25px; background-color: #FFFFFF;">
-              <h1>Become Awesome</h1>
-              <p>Here you will learn how to become awesome.</p>
-              <a class="btn btn-danger pull-right" href="{% url 'awesome_info' %}">More Info</a>
+        <div class="col-sm-5" style="margin-right: 25px;background-color: #FFFFFF;">
+
+          <h5 style="margin-top: 10px; ">All Nodes managed by the system</h5>
+          <hr>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-11">
+              <p ng-repeat="node in nodes" style="margin-top: 0px;"><img src="images/arrow.jpg">{{node.name}}</p>
+            </div>
+          </div>
+
         </div>
-        <div class="col-sm-6" style="background-color: #FFFFFF;">
-              <h1>Here you will learn how to become super rad.</h1>
-              <p>Tubular dude.</p>
-              <a class="btn btn-success" href="{% url 'rad_info' %}" role="button">More Info</a>
+        <div class="col-sm-6" style="background-color: #FFFFFF;" id="curve_chart">
+          <h5 style="margin-top: 10px; ">Moisture Level graph</h5>
+          <hr>
         </div>
       </div>
     </div>
@@ -33,5 +39,44 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+      var app = angular.module("land-app", []);
+      app.controller("land-control", function($scope) {
+          $scope.nodes = [
+              {name : "Alfreds Futterkiste"},
+              {name : "Berglunds snabbköp"},
+              {name : "Centro comercial Moctezuma"},
+              {name : "Ernst Handel"}
+          ]
+      });
+    </script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Moisture'],
+          ['2004',  1000],
+          ['2005',  1170],
+          ['2006',  660],
+          ['2007',  1030]
+        ]);
+
+        var options = {
+          title: 'Moisture Level',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
   </body>
 </html>
